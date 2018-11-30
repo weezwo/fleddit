@@ -1,24 +1,8 @@
-# README
+# Fleddit
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A reddit clone. This app is being built live for a study group on [Learn.co](learn.co).
 
-Things you may want to cover:
+## Videos
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Part I](https://instruction.learn.co/student/video_lectures#/345)
+[Part II](https://instruction.learn.co/student/video_lectures#/346)
