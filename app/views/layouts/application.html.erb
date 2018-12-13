@@ -21,8 +21,10 @@
     <%= link_to "Log In ", login_path %>
     <% end %>
   <br><br>
+  <div class="container">
     <%= flash[:message] if flash[:message]%>
 
     <%= yield %>
+  </div>
   </body>
 </html>

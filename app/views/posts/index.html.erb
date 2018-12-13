@@ -5,7 +5,8 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <h2><%= link_to post.title, post_path(post) %></h2>
-  <h3><%= post.user.username %></h3>
-  <br>
+<div class="container border shadow-sm p-2 mb-2 bg-white rounded">
+  <h4><%= link_to post.title, post_path(post) %></h4>
+  <p><%= post.user.username %></p>
+</div>
 <% end %>
