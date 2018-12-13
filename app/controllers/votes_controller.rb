@@ -7,8 +7,10 @@ class VotesController < ApplicationController
     end
 
     @vote = current_user.votes.find_or_initialize_by(post: @post)
-
-    if @vote.update(vote_params)
+    if @vote.value && @vote.value == params[:vote][:value].to_i
+      @vote.destroy
+      flash[:message] = "Unvote Successful!"
+    elsif @vote.update(vote_params)
       flash[:message] = "Vote Successful!"
     else
       flash[:message] = "Something went wrong!"

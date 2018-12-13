@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   </head>
 
   <body>
@@ -14,12 +15,13 @@
 
     <% if logged_in? %>
     <%= link_to "New Post", new_post_path %> | 
-    <%= link_to "Profile", user_path(current_user) %> |
+    <%= link_to "Profile", user_posts_path(current_user) %> |
     <%= link_to "Log Out", logout_path, method: :delete %>
     <% else %>
     <%= link_to "Sign Up", signup_path %> | 
     <%= link_to "Log In ", login_path %>
     <% end %>
+    <%# raise %>
   <br><br>
   <div class="container">
     <%= flash[:message] if flash[:message]%>

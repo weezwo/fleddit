@@ -6,7 +6,11 @@
 
 <% @posts.each do |post| %>
 <div class="container border shadow-sm p-2 mb-2 bg-white rounded">
-  <h4><%= link_to post.title, post_path(post) %></h4>
-  <p><%= post.user.username %></p>
+  <h4><%= post.votes.sum(&:value) %> <%= link_to post.title, post_path(post) %></h4>
+  <p><%= link_to post.user.username, user_posts_path(post.user) %></p>
+  <% if @nested && post.user == current_user %>
+  <%= link_to "Edit Post", edit_post_path(post)%>
+  <%= link_to "Delete Post", post_path(post), method: :delete %>
+  <% end %>
 </div>
 <% end %>

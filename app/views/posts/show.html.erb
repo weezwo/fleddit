@@ -1,16 +1,26 @@
-<h2><%= @post.title %></h2>
-<h3><%= @post.user.username %></h3>
+<h2> <%= @post.title %></h2>
+<h3> <%= @vote_total %> <%= link_to @post.user.username, user_posts_path(@post.user) %></h3>
 
 <p><%= @post.body %></p>
 
 <%= form_for [@post, @vote] do |f| %>
 <%= f.hidden_field :value, value: 1 %>
-<%= f.submit value: 'Vote up!!'%>
+<% if @user_vote && @user_vote.value == 1 %>
+  <%= f.submit value: 'Unvote'%>
+<% else %>
+  <%= f.submit value: 'Vote up!!'%>
 <% end %>
-
+<% end %>
 <%= form_for [@post, @vote] do |f| %>
 <%= f.hidden_field :value, value: -1 %>
-<%= f.submit value: 'Vote down!!'%>
+<% if @user_vote && @user_vote.value == -1 %>
+  <%= f.submit value: 'Unvote'%>
+<% else %>
+  <%= f.submit value: 'Vote down!!'%>
+<% end %>
 <% end %>
 
-<%= @vote_total %>
+<% if @post.user == current_user %>
+<%= link_to "Edit Post", edit_post_path(@post)%>
+<%= link_to "Delete Post", post_path(@post), method: :delete %>
+<% end %>
