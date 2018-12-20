@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, :redirect_if_post_nonexistent!, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_authorized!, only: [:edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in!, only: [:new, :create]
   
   def index
     if params[:user_id]
@@ -15,6 +16,10 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+  end
+
+  def ordered_by_votes
+    @posts = Post.ordered_by_votes
   end
 
   def new

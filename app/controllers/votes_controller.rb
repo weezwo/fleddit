@@ -1,6 +1,8 @@
 class VotesController < ApplicationController
+  before_action :redirect_if_not_logged_in!
+
   def create
-    @post = Post.find_by(params[:post_id])
+    @post = Post.find_by(id: params[:post_id])
     if !@post
       flash[:message] = "No such post!"
       redirect_to posts_path

@@ -7,5 +7,5 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
     # sum up votes for each post and order by that sum
-  scope :ordered_by_votes, -> { joins(:votes).group('posts.id').order('SUM("votes.value")') } # DANGEROUS!! CHANGE THIS!
+  scope :ordered_by_votes, -> { joins(:votes).group('posts.id').order(Arel.sql('SUM("votes.value")')) }
 end

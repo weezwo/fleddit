@@ -9,4 +9,11 @@ private
   def logged_in?
     !!current_user
   end
+
+  def redirect_if_not_logged_in!
+    if !logged_in?
+      flash[:message] = "You must be logged in to complete this action!"
+      redirect_back fallback_location: root_path
+    end
+  end
 end

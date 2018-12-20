@@ -1,3 +1,5 @@
+<%= render partial: 'application/error_diplay', locals: {object: @post}%>
+
 <%= form_for @post do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title%>
